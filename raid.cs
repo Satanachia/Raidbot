@@ -562,14 +562,16 @@ namespace PoiBot
 								name = msg.Packet.GetString();
 								characters.SafeSet(eid, name);
 							}
+							
 							var zone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
 							var utcNow = DateTime.UtcNow;
 							var pacificNow = TimeZoneInfo.ConvertTimeFromUtc(utcNow, zone);
 							string time = pacificNow + "";
 							string message = time + "   " + name + " " + currentch + " has CCed";
-							main.clientnameplusch = name + " " + currentch + "-" ;
+							main.clientnameplusch = name + " " + currentch + "-";
 							await Mabitodiscord(log, message, "Log");
 							await Mabitodiscord(statusofbot, currentch + " " + "Has connected", "statusbot");
+							
 
 						}
 						break;
@@ -832,6 +834,7 @@ namespace PoiBot
 			while (true)
 			{
 				Thread.Sleep(250);
+				
 				var count = packetQueue.Count;
 				if (rMarket.Checked == true)
                 {
@@ -871,7 +874,7 @@ namespace PoiBot
 
         private void RaidBot_Load_1(object sender, EventArgs e)
         {
-
+			
 			// Creating an invisible message receiver window in a separate thread
 			Thread invisWindowThread = new Thread(new ThreadStart(() =>
 			{
@@ -914,6 +917,13 @@ namespace PoiBot
 
 
 			}
+
+		}
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+			this.Text = nameme.Text;
 
 		}
     }
