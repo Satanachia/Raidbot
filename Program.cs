@@ -1,6 +1,6 @@
-﻿using NaoParse;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace PoiBot
 {
@@ -15,6 +15,8 @@ namespace PoiBot
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new RaidBot());
+
 		}
+
 	}
 }

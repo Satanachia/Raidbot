@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F322AFA4-02A9-4643-8A1C-BE94797D4B33}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>NaoParse</RootNamespace>
+    <RootNamespace>Raidbot</RootNamespace>
     <AssemblyName>Raidbot9000</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -76,12 +76,6 @@
     <Compile Include="FrmAlissaSelect.Designer.cs">
       <DependentUpon>FrmAlissaSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
-    </Compile>
     <Compile Include="Parsing\CombatInfo.cs" />
     <Compile Include="Parsing\Entity.cs" />
     <Compile Include="Parsing\Op.cs" />
@@ -104,9 +98,6 @@
     <Compile Include="Util\WinApi.cs" />
     <EmbeddedResource Include="FrmAlissaSelect.resx">
       <DependentUpon>FrmAlissaSelect.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -136,7 +127,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="favicon.ico" />
     <Content Include="Resources\market.png" />
     <Content Include="Resources\20039012.png" />
   </ItemGroup>

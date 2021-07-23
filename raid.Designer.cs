@@ -41,8 +41,7 @@ namespace PoiBot
             this.rNormal = new System.Windows.Forms.RadioButton();
             this.button5 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button6 = new System.Windows.Forms.Button();
-            this.nameme = new System.Windows.Forms.TextBox();
+            this.tname = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -148,30 +147,19 @@ namespace PoiBot
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button6
+            // tname
             // 
-            this.button6.Location = new System.Drawing.Point(174, 138);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "name me";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // nameme
-            // 
-            this.nameme.Location = new System.Drawing.Point(174, 112);
-            this.nameme.Name = "nameme";
-            this.nameme.Size = new System.Drawing.Size(100, 20);
-            this.nameme.TabIndex = 11;
+            this.tname.Location = new System.Drawing.Point(12, 111);
+            this.tname.Name = "tname";
+            this.tname.Size = new System.Drawing.Size(100, 20);
+            this.tname.TabIndex = 10;
             // 
             // RaidBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(310, 189);
-            this.Controls.Add(this.nameme);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.tname);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.rNormal);
             this.Controls.Add(this.rMarket);
@@ -202,7 +190,6 @@ namespace PoiBot
         private System.Windows.Forms.RadioButton rNormal;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox nameme;
+        private System.Windows.Forms.TextBox tname;
     }
 }

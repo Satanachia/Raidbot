@@ -15,13 +15,11 @@ using System.Threading;
 using System.Reflection;
 using JNogueira.Discord.Webhook.Client;
 using System.Threading.Tasks;
-using NaoParse;
 
 namespace PoiBot
 {
 	public partial class RaidBot : Form
 	{
-		private SortableBindingList<DamageMeterRow> AttackerList = new SortableBindingList<DamageMeterRow>();
 		private Stopwatch watch = new Stopwatch();
 		private SafeDictionary<long, string> characters = new SafeDictionary<long, string>();
 		private HashSet<int> packetIdSet = new HashSet<int>();
@@ -42,7 +40,7 @@ namespace PoiBot
 		string avahook1line = "https://discord.com/api/webhooks/845842810389004319/hXcA3B0revJcDWO0CWZTcOngUQuT1gA50cOnnSjsEiMnhsotSNxmcstHRThb_dKsXQZd";
 		string statusofbot = "https://discord.com/api/webhooks/847797101761134612/-bzKg0P4cIlz9MAbSsO5tov1PR_QsQRgwuLF6e3aJfe5pb4p3Sr8F8hyrfqO8VqinV1W";
 		string currentch = "";
-		public static string name = "";
+		String name = "";
 		bool market = false;
 		int time = 0;
 
@@ -347,14 +345,7 @@ namespace PoiBot
 
 		private void onSend(Msg msg)
 		{
-			if (msg.Op == Op.Run)
-			{
 
-			}
-			else if (msg.Op == Op.FlyTo)
-			{
-
-			}
 		}
 		private async Task ProcessRaidPacketAsync(int type, byte status)
 		{
@@ -546,7 +537,7 @@ namespace PoiBot
 		private async Task onRecvAsync(Msg msg)
 		{
 			time = 0;
-			main.online = "connect" + " " + currentch;
+			
 			this.BackColor = Color.White;
 			switch (msg.Op)
 			{
@@ -561,6 +552,7 @@ namespace PoiBot
 								msg.Packet.GetByte();
 								name = msg.Packet.GetString();
 								characters.SafeSet(eid, name);
+								this.Text = name;
 							}
 							
 							var zone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
@@ -568,7 +560,7 @@ namespace PoiBot
 							var pacificNow = TimeZoneInfo.ConvertTimeFromUtc(utcNow, zone);
 							string time = pacificNow + "";
 							string message = time + "   " + name + " " + currentch + " has CCed";
-							main.clientnameplusch = name + " " + currentch + "-";
+							
 							await Mabitodiscord(log, message, "Log");
 							await Mabitodiscord(statusofbot, currentch + " " + "Has connected", "statusbot");
 							
@@ -576,43 +568,6 @@ namespace PoiBot
 						}
 						break;
 					}
-				case Op.EntityAppears:
-					{
-						var eid = msg.Packet.GetLong();
-						if (EntityId.IsCharacter(eid))
-						{
-							msg.Packet.GetByte();
-							var name = msg.Packet.GetString();
-							
-							characters.SafeSet(eid, name);
-						}
-						break;
-					}
-				case Op.EntitiesAppear:
-					{
-						var count = msg.Packet.GetShort();
-						for (var i = 0; i < count; i++)
-						{
-							var type = msg.Packet.GetShort();
-							msg.Packet.GetInt();
-							var data = msg.Packet.GetBin();
-							Packet subMsg = new Packet(data, 0);
-							var eid = subMsg.GetLong();
-							if (EntityId.IsCharacter(eid))
-							{
-								if (type == 16)
-								{
-									subMsg.GetByte();
-									var name = subMsg.GetString();
-									characters.SafeSet(eid, name);
-								}
-							}
-						}
-
-						break;
-					}
-
-
 				case Op.Chat:
 					{
 						if (market)
@@ -909,6 +864,8 @@ namespace PoiBot
         private async void timer1_Tick(object sender, EventArgs e)
         {
 			time++;
+			this.Text = name + " " + currentch;
+			tname.Text = name + " " + currentch;
 			if (time == 60)
             {
 				
@@ -917,13 +874,6 @@ namespace PoiBot
 
 
 			}
-
-		}
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-			this.Text = nameme.Text;
 
 		}
     }
